@@ -22,3 +22,10 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+.cardTitle {
+    font-size: 30px;
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 1.2;
+    text-align: center;
+  }
