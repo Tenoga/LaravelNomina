@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     public function index(){
-        return "Pagina index Admin";
+        return view('admin.index');
     }
     public function create(){
         return "Pagina para crear un Admin";
