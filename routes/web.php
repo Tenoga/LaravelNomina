@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -16,13 +17,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/admin', AdminController::class);
+Route::resource('/users', UserController::class);
 
-// Route::get('/', HomeController::class)->name('index');
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
-Route::get('/prueba', function () {
-    return view('prueba');
+// Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+
+Route::get('/', function () {
+    return view('index');
 });
 
 
@@ -30,9 +31,5 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
-
-
-// Route::get('/', function () {
-//     return view('index');
-// });
+// ================Drop===================//
+Route::get('/users/{id}/drop', [\App\Http\Controllers\UserController::class , 'drop' ]);

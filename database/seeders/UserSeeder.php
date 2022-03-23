@@ -37,6 +37,7 @@ class UserSeeder extends Seeder
             'hours' => random_int(10, 120),
             'password' => bcrypt('changeme'),
             'remember_token' => Str::random(10), 
+            'is_admin' => '1',
         ])->assignRole('Admin');
     }
 }
