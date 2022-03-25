@@ -38,6 +38,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('changeme'),
             'remember_token' => Str::random(10), 
             'is_admin' => '1',
+            'category' => 'C',
         ])->assignRole('Admin');
     }
 }

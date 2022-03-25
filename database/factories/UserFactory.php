@@ -23,7 +23,9 @@ class UserFactory extends Factory
             'phone' => $this->faker->randomNumber(9, true),
             'hours' => random_int(10, 120),
             'password' => bcrypt('password'),
-            'is_admin' => $this->faker->boolean(),
+            // 'is_admin' => $this->faker->boolean(),
+            'is_admin' => 0,
+            'category' => $this->faker->regexify('[A-C]'),
             'remember_token' => Str::random(10),           
         ];
     }

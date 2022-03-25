@@ -26,6 +26,7 @@ class User extends Authenticatable
         'hours',
         'password',
         'is_admin',
+        'category',
     ];
 
     /**
@@ -50,5 +51,6 @@ class User extends Authenticatable
         'phone' => 'string',
         'hours' => 'string',
         'is_admin' => 'boolean',
+        'category' => 'string',
     ];
 }

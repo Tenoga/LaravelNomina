@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('hours')->nullable();
             $table->string('password');
             $table->boolean('is_admin')->default(false);
+            $table->string('category');
             $table->rememberToken();
             $table->timestamps();
         });

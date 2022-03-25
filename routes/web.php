@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('/users', UserController::class);
+Route::resource('/payroll', PayrollController::class);
 
 
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);

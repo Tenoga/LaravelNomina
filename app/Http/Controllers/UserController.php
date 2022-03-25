@@ -25,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create', ['users'=>User::all()]);
     }
 
     /**
@@ -48,9 +48,7 @@ class UserController extends Controller
     public function show($id)
     {
         $userInfo = User::findOrFail($id);
-        return view(
-            'users.show', [
-            'user'=>$userInfo]);
+        return view('users.show', ['user'=>$userInfo]);
     }
 
     /**
