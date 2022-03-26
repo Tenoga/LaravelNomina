@@ -1,6 +1,7 @@
 @extends('layouts.appLayout')
 @section('content')
 @hasanyrole('Admin|Employee')
+
 <div class="container listTable">
     <table class="table">
         <h1 class="display-3" style="text-align: center; padding-top: 15px;">Employees List</h1>
@@ -11,6 +12,7 @@
                 <th scope="col">Email</th>
                 <th scope="col">Phone</th>
                 <th scope="col">Hours</th>
+                <th scope="col">Category</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
@@ -23,6 +25,7 @@
                             <td >{{$user->email}} </td>
                             <td >{{$user->phone}} </td>
                             <td >{{$user->hours}} </td>
+                            <td >{{$user->category}} </td>
                             <td><a href="/users/{{$user->id}}" class="btn-small btn-success rounded-pill">View User</a></td>
                             <td><a href="#" class="btn btn-warning" style="border-radius: 13px;"><img src="https://img.icons8.com/ios/50/000000/pencil.png" width="25px" /></a></td>
                             <td><a href="/users/{{$user->id}}/drop" class="btn-small btn-danger rounded-pill"><img src="https://img.icons8.com/ios/50/000000/delete--v1.png" width="25px" /></a></td>
@@ -32,9 +35,10 @@
                 </tr>
         </tbody>
     </table>
+    
 </div>
 @else
 <br><br>
-@include('authAlert')
+@include('components.authAlert')
 @endhasanyrole
 @endsection

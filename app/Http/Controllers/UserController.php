@@ -36,7 +36,17 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        //
+        $newUser = new User();
+        $newUser ->name = $request->get('name');
+        $newUser ->email = $request->get('email');
+        $newUser ->phone = $request->get('phone');
+        $newUser ->hours = $request->get('hours');
+        $newUser ->category = $request->get('category');
+        $newUser ->password = $request->get('password');
+
+        $newUser -> save();
+        // $newUser->assignRole('Vendedor');
+        return redirect('/usuers');
     }
 
     /**

@@ -1,6 +1,5 @@
 @extends('layouts.appLayout')
 @section('content')
-
 <div class="container">
 	<div class="limiter">
 		<div class="container-login100">
@@ -12,7 +11,7 @@
 				</div>
 
 				<form method="POST" action="{{ route('login') }}" class="login100-form validate-form">
-				@csrf
+					@csrf
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
 						<span class="label-input100">Email</span>
 						<input class="input100 @error('email') is-invalid @enderror" id="email" type="email" name="email" placeholder="Enter Email" value="{{ old('email') }}" required autocomplete="email">
@@ -47,34 +46,25 @@
 							</a>
 						</div>
 					</div>
-
-					<div class="container-login100-form-btn">
-						<button type="submit" class="login100-form-btn">
-							{{ __('Login') }}
-						</button>
+					<div class="row">
+						<div class="col">
+							<div class="container-login100-form-btn">
+								<button type="submit" class="login100-form-btn">
+									{{ __('Login') }}
+								</button>
+							</div>
+						</div>
+						<div class="col">
+							<div class="container-login100-form-btn">
+								<a href="/register" class="login100-form-btn">
+									{{ __('Register') }}
+								</a>
+							</div>
+						</div>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
-
-
-	<!--===============================================================================================-->
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
-	<!--===============================================================================================-->
-	<script src="vendor/countdowntime/countdowntime.js"></script>
-	<!--===============================================================================================-->
-	<script src="js/main.js"></script>
 </div>
-
 @endsection

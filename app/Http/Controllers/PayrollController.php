@@ -47,38 +47,59 @@ class PayrollController extends Controller
      * @param  \App\Models\Payroll  $payroll
      * @return \Illuminate\Http\Response
      */
-    public function show($hours)
+    public function show($id)
     {
-        $payrollHours = User::findOrFail($hours);
-        $userCategory = 'C';
+        $userInfo=User::findOrFail($id);
+        $hours = $userInfo->hours;
+        $userCategory = $userInfo->category;
+
         $A = 25000;
         $B = 28000;
-        $C = 30000;
+        $C = 30000; 
+        //Employee example Category = C ; 120 Worked hours
+
         if($userCategory == "A"){
-            $userCategory = $A;
+            $category = $A;
         }elseif($userCategory == "B"){
-            $userCategory = $B;
+            $category = $B;
         }elseif($userCategory == "C"){
-            $userCategory = $C;
+            $category = $C;
         }
+    
             
-        if($hours > 90){
-            $total1 = 90 * $userCategory; // 2'700.000
+        if($hours >= 90){
+            $hCategory = $category;
+            $total1 = 90 * $category; // 2'700.000
+
+
             $prDiff = $hours - 90; // 30
-            $prExtra = $userCategory * 0.10; // 30000 * 0.10 = 3.000
-            $userCategory = $userCategory + $prExtra; // 30.000 + 3.000
-            $total2 = $prDiff * $userCategory; // 990.000
+            $prExtra = $category * 0.10; // 30000 * 0.10 = 3.000
+            $category = $category + $prExtra; // 30.000 + 3.000
+            $total2 = $prDiff * $category; // 990.000
 
             $prTotal = $total1 + $total2; // 3'690.000
-        }if($hours >= 100){
-            $prTotal = $prTotal + 100000; // 3'690.000 + 100.000 = 3'790.000
+            if($hours >= 100){
+                $prTotal = $prTotal + 100000; // 3'690.000 + 100.000 = 3'790.000
+                $bonus = 100000;
+            }else{
+                $bonus = 0;
+            }
+        }else{
+            $prTotal = $hours * $category; 
         }
-        else{
-            $prTotal = $hours * $userCategory;
-        }
-        // return view('payroll.index', ['user'=>$payrollInfo]);
+        return view('payroll.index', [
+            'user'=>$userInfo, 
+            'prTotal' =>$prTotal, 
+            'prDiff' =>$prDiff, 
+            'workHour' => $hCategory,
+            'workedHours' => $hours,
+            'extraHours' => $prDiff,
+            'bonus' => $bonus,
+            'total' => $prTotal
 
+        ]);
 
+        
     }
 
     /**

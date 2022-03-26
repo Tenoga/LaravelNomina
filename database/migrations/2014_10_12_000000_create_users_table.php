@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('phone')->nullable();
-            $table->string('hours')->nullable();
+            $table->integer('hours')->nullable();
             $table->string('password');
             $table->boolean('is_admin')->default(false);
-            $table->string('category');
+            $table->string('category')->default('B');
             $table->rememberToken();
             $table->timestamps();
         });
