@@ -28,8 +28,9 @@
         </div>
     </div>
     <div class="row">
-        <div class="col s6 mr-5">
+        <div class="col s6 mr-5" >
             <div class="card-panel green lighten-1">
+                <!-- <img src="{{ asset('img/barIcon.png') }}" class="opacity-25" width="40%"></img> -->
                 <h1 class="text-right mr-4 text-white">{{$user->hours}}</h1>
                 <h3 class="text-right mr-3 text-white">Hours</h3>
             </div>

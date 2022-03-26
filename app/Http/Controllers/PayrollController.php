@@ -85,6 +85,9 @@ class PayrollController extends Controller
                 $bonus = 0;
             }
         }else{
+            $prDiff = 0;
+            $hCategory = $category;
+            $bonus = 0;
             $prTotal = $hours * $category; 
         }
         return view('payroll.index', [

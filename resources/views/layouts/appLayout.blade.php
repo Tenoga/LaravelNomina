@@ -13,12 +13,9 @@
   @else
   <div class="wrapper d-flex align-items-stretch">
     <div id="sidebar">
-      <!-- <div class="custom-menu"> -->
-      <!-- <button type="button" id="sidebarCollapse" class="btn btn-primary"></button> -->
-      <!-- </div> -->
       <div class="img bg-wrap text-center py-4" style="background-image: url(img/bg_1.jpg);">
         <div class="user-logo">
-          <div class="img" style="background-image: url(img/logo.jpg);"></div>
+          <img class="img" src="{{ asset('img/logo.jpg') }}"></img>
           <h3>Test Name</h3>
         </div>
       </div>
