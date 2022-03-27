@@ -28,7 +28,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col s6 mr-5" >
+        <div class="col s6 mr-5">
             <div class="card-panel green lighten-1">
                 <!-- <img src="{{ asset('img/barIcon.png') }}" class="opacity-25" width="40%"></img> -->
                 <h1 class="text-right mr-4 text-white">{{$user->hours}}</h1>
@@ -46,21 +46,17 @@
         <div class="col s6 mr-5">
             <div class="card-panel deep-purple lighten-2">
                 <h1>
-                    Graph1
+                    Graph Max Hours 120
                 </h1>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 75%; ">{{$user->hours}}</div>
-                </div>
+                <progress class="progress deep-purple" id="file" value="{{$user->hours}}" max="120"> {{$user->hours}}% </progress>
             </div>
         </div>
         <div class="col s6">
-            <div class="card-panel brown lighten-2">
+            <div class="card-panel cyan darken-1">
                 <h1>
-                    Graph2
+                    Graph Goal 100 Hours
                 </h1>
-                <div class="progress">
-                    <div class="determinate" style="width: 90%"></div>
-                </div>
+                <progress class="progress deep-purple" id="file" value="{{$user->hours}}" max="100"> {{$user->hours}}% </progress>
             </div>
         </div>
     </div>

@@ -65,42 +65,57 @@ class PayrollController extends Controller
         }elseif($userCategory == "C"){
             $category = $C;
         }
-    
-            
-        if($hours >= 90){
-            $hCategory = $category;
-            $total1 = 90 * $category; // 2'700.000
+        if($hours < 10){
+            echo "<h1>The hours worked may not be less than 10</h1>";
+            echo "
+            <div>
+                <a href='/users'>Back</a> 
+            </div>";
 
-
-            $prDiff = $hours - 90; // 30
-            $prExtra = $category * 0.10; // 30000 * 0.10 = 3.000
-            $category = $category + $prExtra; // 30.000 + 3.000
-            $total2 = $prDiff * $category; // 990.000
-
-            $prTotal = $total1 + $total2; // 3'690.000
-            if($hours >= 100){
-                $prTotal = $prTotal + 100000; // 3'690.000 + 100.000 = 3'790.000
-                $bonus = 100000;
-            }else{
-                $bonus = 0;
-            }
+        }elseif($hours > 120){
+            echo "<h1>The hours worked may not be more than 120</h1>";
+            echo "
+            <div>
+                <a href='/users'>Back</a> 
+            </div>";
         }else{
-            $prDiff = 0;
-            $hCategory = $category;
-            $bonus = 0;
-            $prTotal = $hours * $category; 
+            if($hours >= 90){
+                $hCategory = $category;
+                $total1 = 90 * $category; // 2'700.000
+    
+    
+                $prDiff = $hours - 90; // 30
+                $prExtra = $category * 0.10; // 30000 * 0.10 = 3.000
+                $category = $category + $prExtra; // 30.000 + 3.000
+                $total2 = $prDiff * $category; // 990.000
+    
+                $prTotal = $total1 + $total2; // 3'690.000
+                if($hours >= 100){
+                    $prTotal = $prTotal + 100000; // 3'690.000 + 100.000 = 3'790.000
+                    $bonus = 100000;
+                }else{
+                    $bonus = 0;
+                }
+            }else{
+                $prDiff = 0;
+                $hCategory = $category;
+                $bonus = 0;
+                $prTotal = $hours * $category; 
+            }
+            return view('payroll.index', [
+                'user'=>$userInfo, 
+                'prTotal' =>$prTotal, 
+                'prDiff' =>$prDiff, 
+                'workHour' => $hCategory,
+                'workedHours' => $hours,
+                'extraHours' => $prDiff,
+                'bonus' => $bonus,
+                'total' => $prTotal
+    
+            ]);
         }
-        return view('payroll.index', [
-            'user'=>$userInfo, 
-            'prTotal' =>$prTotal, 
-            'prDiff' =>$prDiff, 
-            'workHour' => $hCategory,
-            'workedHours' => $hours,
-            'extraHours' => $prDiff,
-            'bonus' => $bonus,
-            'total' => $prTotal
-
-        ]);
+            
+        
 
         
     }

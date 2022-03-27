@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -67,9 +68,10 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view ('users.edit', ['user'=>$user]);
     }
 
     /**
@@ -79,9 +81,29 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserRequest $request, User $user)
+    public function update(UpdateUserRequest $request, $id)
     {
-        //
+        $userUpdt = User::find($id);
+        $userUpdt ->name = $request->get('name');
+        $userUpdt ->email = $request->get('email');
+        $userUpdt ->phone = $request->get('phone');
+        $userUpdt ->hours = $request->get('hours');
+        if ($request->password != null ) {
+            $userUpdt ->password = Hash::make($request->get('password'));
+        };     
+        if ($request->is_admin != null ) {
+            $is_admin = $request->is_admin === 'true' ? true: false;
+            $userUpdt ->is_admin = $is_admin;
+        };        
+        $userUpdt -> save();
+
+        // if ($userUpdt->is_admin) {
+        //     $userUpdt->assignRole('Admin');
+        // }else {
+        //     $userUpdt->assignRole('Vendedor');
+        // }
+
+        return redirect('/users');
     }
 
     /**

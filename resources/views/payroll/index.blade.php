@@ -26,9 +26,8 @@
             </tr>
         </thead>
         <tbody>
-            {{$user-> id}}
                 <tr>    
-                    <th>Work Hour</th>
+                    <td>Work Hour</td>
                     <td>{{$workHour}}</td>
                 </tr>
                 <tr>    
