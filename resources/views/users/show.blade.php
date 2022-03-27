@@ -24,7 +24,7 @@
             <h3 class="col d-inline">Phone:</h3>
             <h5 class="col d-inline text-secondary">{{$user->phone}}</h5>
             <h3 class="col d-inline">Category:</h3>
-            <h5 class="col d-inline text-secondary">A</h5>
+            <h5 class="col d-inline text-secondary">{{$user->category}}</h5>
         </div>
     </div>
     <div class="row">

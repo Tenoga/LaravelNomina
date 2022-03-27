@@ -6,7 +6,7 @@
 </head>
 
 <body>
-  @guest
+@guest
   @if (Route::has('login'))
   
   @endif
@@ -56,10 +56,6 @@
   </div>
  
 
-  <script src="{{ asset ('js/jquery.js')}} "></script>
-  <script src="{{ asset ('js/popper.js')}} "></script>
-  <script src="{{ asset ('js/bootstrap.js')}}"></script>
-  <script src="{{ asset ('js/main.js')}}"></script>
 
 
 </body>

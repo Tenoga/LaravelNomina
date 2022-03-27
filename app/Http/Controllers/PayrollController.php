@@ -101,6 +101,8 @@ class PayrollController extends Controller
                 $hCategory = $category;
                 $bonus = 0;
                 $prTotal = $hours * $category; 
+                $total1 = $prTotal;
+                $total2 = 0;
             }
             return view('payroll.index', [
                 'user'=>$userInfo, 
@@ -110,6 +112,8 @@ class PayrollController extends Controller
                 'workedHours' => $hours,
                 'extraHours' => $prDiff,
                 'bonus' => $bonus,
+                'moneyEarned' => $total1,
+                'extraMoney' => $total2,
                 'total' => $prTotal
     
             ]);
